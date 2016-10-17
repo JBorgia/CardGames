@@ -75,7 +75,7 @@ public class BlackJack {
 			seat.setAce();
 		}
 		if (seat instanceof Player && seat.getHand().size() > 2) {
-			System.out.println("You got a " + shoe.getCard(0) + ", for a total of " + seat.getTotal());
+			System.out.println("You got a " + shoe.getCard(0) + ", for a new total of " + seat.getTotal());
 		}
 		shoe.removeCard(0);
 	}

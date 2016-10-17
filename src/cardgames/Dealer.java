@@ -12,6 +12,8 @@ public class Dealer extends Seat {
 		for (Card card : this.getHand()) {
 			System.out.println(card);
 		}
+
+		CardUX.printHand(this.getHand());
 		System.out.println("For a total count of " + this.getTotal() + ".");
 	}
 }

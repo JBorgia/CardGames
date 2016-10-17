@@ -5,11 +5,11 @@ import java.util.Scanner;
 public class Menu {
 	static BlackJackConfig config = new BlackJackConfig();
 	static Scanner kb = new Scanner(System.in);
-
+	/*Main for program*/
 	public static void main(String[] args) {
 		mainNav();
 	}
-
+	/*processes selection*/
 	public static void mainNav() {
 		int choice = 0;
 		while (choice != 3) {
@@ -28,25 +28,26 @@ public class Menu {
 			}
 		}
 	}
-
+	/*lists options and collects user selection*/
 	private static int mainMenu() {
 		int level = 0;
 		CardUX.welcome();
-		String menuList[] = { "---- Main Menu ----\n", "New Game", "Options", "Quit" };
+
 		do {
-			for (int i = 0; i < menuList.length; i++) {
-				if (i > 0) {
-					System.out.printf(" %1$2s. ", i);
-				}
-				System.out.println(menuList[i]);
-			}
+			System.out.println();
+			System.out.println("---- Main Menu ----");
+			System.out.println(" 1. New Game");
+			System.out.println(" 2. Options");
+			System.out.println(" 3. Quit");
 			System.out.print("\n>>");
 
-			level = kb.nextInt();
-			if (level < 1 || level >= menuList.length) {
-				System.out.println(level + " is not a valid options. Please select again.");
+			if (kb.hasNextInt() && (level < 1 || level > 3)){
+				level = kb.nextInt();
+			}else {
+				System.out.println("That is not a valid option. Please select a number from the options available.");
 			}
-		} while (level < 1 || level >= menuList.length);
+			kb.nextLine();
+		} while (level < 1 || level > 3);
 		return level;
 	}
 }

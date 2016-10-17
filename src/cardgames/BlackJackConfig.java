@@ -1,11 +1,11 @@
 package cardgames;
 
 import java.util.Scanner;
-
+/*holds settings and acts as a reference for other parts of the program*/
 public class BlackJackConfig {
 	private static int NumberofPlayers = 2;
-	private static int StartingCash = 2;
-	private static int MinimumBid = 1;
+	private static int StartingCash = 1500;
+	private static int MinimumBid = 5;
 	private static int MaximumBid = 500;
 	private static int WinningAmmount = 10_000;
 	private static int NumberOfDecks = 5;
@@ -13,20 +13,25 @@ public class BlackJackConfig {
 	static Scanner kb = new Scanner(System.in);
 
 	public void menu() {
-		int choice;
+		int choice=0;
 		do {
 			System.out.println("---- Game Options ----");
 			System.out.println(" 1. Number of Players:\t" + getNumberofPlayers());
 			System.out.println(" 2. Number of Decks:\t" + getNumberOfDecks());
 			System.out.println(" 3. Starting Cash:\t" + getStartingCash());
-			System.out.println(" 4. Minimum Bid:\t" + getMinimumBid());
-			System.out.println(" 5. Maximum Bid:\t" + getMaximumBid());
+			System.out.println(" 4. Minimum Bid:  \t" + getMinimumBid());
+			System.out.println(" 5. Maximum Bid:  \t" + getMaximumBid());
 			System.out.println(" 6. Winning Ammount:\t" + getWinningAmmount());
 			System.out.println(" 7. Return to Main Menu");
 
 			System.out.print("\n>>");
-			choice = kb.nextInt();
-
+			if (kb.hasNextInt() && (choice < 1 || choice > 7)){
+				choice = kb.nextInt();
+			}else {
+				System.out.println("That is not a valid option. Please select a number from the options available.");
+			}
+			kb.nextLine();
+			
 			switch (choice) {
 			case 1:
 				System.out.print("Set the number of players: ");

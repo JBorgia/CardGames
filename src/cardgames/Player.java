@@ -1,5 +1,5 @@
 package cardgames;
-
+/*creates players and stores player data*/
 public class Player extends Seat {
 	private int number;
 	private int balance;

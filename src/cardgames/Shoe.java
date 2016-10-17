@@ -3,7 +3,7 @@ package cardgames;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-
+/*Class Shoe creates and loads the shoe with the number of decks specified in BlackJackConfig*/
 public class Shoe {
 	List<Card> shoe = new ArrayList<>();
 

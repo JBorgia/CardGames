@@ -3,6 +3,7 @@ package cardgames;
 import java.util.ArrayList;
 import java.util.List;
 
+/*abstract seat: subclasses include Player and Dealer*/
 public abstract class Seat {
 	List<Card> hand = new ArrayList<>();
 
@@ -21,6 +22,7 @@ public abstract class Seat {
 		this.hand.clear();
 	}
 
+	/* gets total value of hand */
 	public int getTotal() {
 		int sum = 0;
 		for (Card card : hand) {
@@ -29,18 +31,21 @@ public abstract class Seat {
 		return sum;
 	}
 
+	/* displays hand */
 	public void displayHand() {
 		for (Card card : hand) {
-				System.out.println(card);
+			System.out.println(card);
 		}
+		CardUX.printHand(this.getHand());
 		System.out.println("For a total count of " + this.getTotal() + ".");
 	}
 
+	/* checks for 'Ace' case and reduces value to 1 if total is over 21 */
 	public void setAce() {
-		if (this.getTotal() > 21 && this.getHand().get(0).Value() == 11) {
-			this.getHand().get(0).setValue(1);
-		} else if (this.getTotal() > 21 && this.getHand().get(1).Value() == 11) {
-			this.getHand().get(1).setValue(1);
+		for (Card card : hand) {
+			if (this.getTotal() > 21 && card.Value() == 11) {
+				card.setValue(1);
+			}
 		}
 	}
 }

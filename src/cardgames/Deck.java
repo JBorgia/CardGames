@@ -13,7 +13,6 @@ public class Deck {
 				if (i == 12) {
 					value = 11; // standard 'Ace'
 								// value is 11.
-								// altValue is
 								// set by game
 				} else if (i < 10 - 2) {
 					value = i + 2; // 2 through 9 are

@@ -1,5 +1,5 @@
 package cardgames;
-
+/*holds players at the table*/
 import java.util.ArrayList;
 import java.util.List;
 

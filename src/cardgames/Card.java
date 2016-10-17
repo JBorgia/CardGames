@@ -1,7 +1,6 @@
 package cardgames;
-
+/*Creates and holds values for card*/
 public class Card {
-	// Aaron, if you are reading this, you're my final bitch... immutably.
 	private int value;
 	private String nameL;
 	private String nameS;
@@ -53,6 +52,14 @@ public class Card {
 		this.nameL = names[1][numWord];
 		this.nameS = names[0][numWord];
 	}
+	
+	public int Value() {
+		return value;
+	}
+	
+	public void setValue(int value) {
+		this.value = value;
+	}
 
 	public String DisplayL() {
 		if (this.Value() == 11) {
@@ -68,14 +75,6 @@ public class Card {
 		} else {
 			return "a " + String.format("%1$2s", NameS()) + "" + SuitSymbol();
 		}
-	}
-
-	public int Value() {
-		return value;
-	}
-
-	public void setValue(int value) {
-		this.value = value;
 	}
 
 	@Override

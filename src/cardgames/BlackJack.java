@@ -1,13 +1,12 @@
 package cardgames;
 
 import java.util.Scanner;
-
+/*BlackJack contains the methods and files for each game*/
 public class BlackJack {
 	Scanner kb = new Scanner(System.in);
 	private Shoe shoe;
 	private Table table;
-	// Shoe shoe = new Shoe();
-
+	/*Initiates a new game and creates and loads the table with players as specified by BlackJackConfig*/
 	public void play() {
 		boolean continuePlay = true;
 		char choice = 'y';
@@ -26,7 +25,7 @@ public class BlackJack {
 			}
 		}
 	}
-
+	/*round runs through the logic for each round of play*/
 	void round() {
 		boolean dealerBlackJack = false;
 		for (Seat seat : table.getTable()) {
@@ -54,7 +53,7 @@ public class BlackJack {
 			((Dealer) table.getTable().get(table.getTable().size() - 1)).displayFullHand();
 		}
 	}
-
+	/*Collects bet amounts from each player*/
 	void pollBets(Player player) {
 		int bet;
 		do {
@@ -69,7 +68,7 @@ public class BlackJack {
 		} while (bet < BlackJackConfig.getMinimumBid() || bet > BlackJackConfig.getMaximumBid());
 		player.setBet(bet);
 	}
-
+	/*distributes cards to each player and the dealer, removing them from the shoe*/
 	void dealCards(Seat seat) {
 		seat.setHand(shoe.getCard(0));
 		if (seat.getTotal() > 21) {
@@ -80,7 +79,7 @@ public class BlackJack {
 		}
 		shoe.removeCard(0);
 	}
-
+	/*Checks for the case of the dealer getting a black jack right off the bat*/
 	boolean check4BlackJack(Dealer dealer) {
 		if (dealer.getTotal() == 21) {
 			return true;
@@ -88,7 +87,7 @@ public class BlackJack {
 			return false;
 		}
 	}
-
+	/*checks for winners and pays out according to the bets placed*/
 	void pollPay() {
 		int dealerHand = table.getTable().get(table.getTable().size() - 1).getTotal();
 		for (Seat seat : table.getTable()) {
@@ -116,7 +115,7 @@ public class BlackJack {
 			seat.resetHand();
 		}
 	}
-
+	/*polls each player for how they want to handle each turn*/
 	void turn(Seat seat) {
 		char choice = '0';
 		if (seat instanceof Player) {
@@ -156,7 +155,7 @@ public class BlackJack {
 			} while (seat.getTotal() < 17 && seat.getTotal() < 21);
 		}
 	}
-
+	/*checks each player to see if they have gone bankrupt, removing them from the game if they are*/
 	private void checkBankrupt() {
 		for (Seat seat : table.getTable()) {
 			if (seat instanceof Player) {
@@ -170,7 +169,7 @@ public class BlackJack {
 			}
 		}
 	}
-
+	/*checks to see if any players remain in the game*/
 	private boolean check() {
 		if (table.getTable().size() <= 1) {
 			return false;
